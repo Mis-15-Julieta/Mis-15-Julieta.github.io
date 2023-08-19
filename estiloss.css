@@ -169,6 +169,7 @@ body {
   background-image: linear-gradient(rgb(255 128 255 / 0.7), rgba(255, 128, 255, 0.7)), url(/img/fondo-burbujas.png);
   background-position: center;
 	background-size: cover;
+  flex-direction: column;
   background-attachment: fixed;
 	color: #ffffff;
 	padding: 1em;
@@ -194,7 +195,11 @@ body {
   opacity: .7;
   position: absolute;
 }
-
+h2.ctofalta{
+  color: #ffffff;
+  font-family: 'Birthstone Bounce', cursive;
+  font-size: 50px;
+}
 .simply-section{
   /* background: #ffffff; */
   /* width: 70px;
@@ -370,10 +375,14 @@ body {
 
   }
   section.canciones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: url("/img/f-4Canciones.JPG");
     background-size: cover;
     /* background-attachment: fixed; */
     background-color: white;
+    flex-direction: column;
   }
   /*according*/
   .accordion {
@@ -1125,6 +1134,11 @@ div img{
 }
 button.accordion{
   font-family: 'Lilita One';
+}
+.music{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 @media (min-width: 1200px) { 
