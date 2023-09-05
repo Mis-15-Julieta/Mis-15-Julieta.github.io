@@ -54,6 +54,13 @@
 <body>
  
   <div class="contenedor"> 
+    
+
+
+
+
+
+
     <div class="portada">
             
           <div class="element">
@@ -180,7 +187,7 @@
      
         <div class="hero">
           <div class="animate animatable element">
-            <h2 class="ctofalta">¿Cuanto falta?</h2>
+            <h2 class="ctofalta">¿Cuánto falta?</h2>
            </div>
           <div id="cuenta" class="cuenta"></div>
         </div>
@@ -283,26 +290,25 @@
 
 
      <!--Audio-->
-
-     <div>
+<!-- 
+      <div>
       <audio id="audio" loop="">
         <source src="/audio/Coldplay  A Sky Full Of Stars Official audio.mp3"
           type="audio/mp3">
       </audio>
 
-      <!-- <button class="playPauseBTN" id="playPauseBTN" onclick="playPause()"></button> -->
       <div class="playPauseBTN" id="playPauseBTN" onclick="playPause()" alt="">
         <i class="fa-solid fa-music fa-beat" style="color: #ffffff;"></i>
-        <!-- <i class="fa-solid fa-volume-high parlante"></i> -->
+        
       </div>
       <span class="material-icons-outlined">
       </span>
-      <!-- Play ►/ Pause -->
-      <!-- <button onclick="stop()">Stop ▋</button> -->
-    </div>
+      
+    </div>  -->
 
+    
     <section class="canciones">
-        <!-- <div class="animatable bounceInLeft"> -->
+
         
           <lottie-player class="lottie" src="./json/animation_music.json" background="transparent" speed="1" style="width: 140px; height: 140px;" loop autoplay></lottie-player>  
   
@@ -582,6 +588,54 @@ tween
     &nbsp; <h6>por</h6> &nbsp;
     <a href="https://www.facebook.com/digitalproject10"><h6>Digital Project</h6></a>
   </footer>
+
+  <div>
+						
+    <audio id="track">
+   <source src="/audio/Coldplay  A Sky Full Of Stars Official audio.mp3">
+   </audio>
+
+   <div id="contenedor-play">
+    <div id="player-container">
+      <div id="play-pause" class="play">Play</div> 
+   </div>
+   </div>
+   
+       
+   
+   </div>
+
+   <script>
+    var track = document.getElementById("track");
+    
+    var controlBtn = document.getElementById("play-pause");
+    
+    function playPause() {
+    if (track.paused) {
+        track.play();
+        //controlBtn.textContent = "Pause";
+        controlBtn.className = "pause";
+    } else { 
+        track.pause();
+         //controlBtn.textContent = "Play";
+        controlBtn.className = "play";
+    }
+    }
+    
+    controlBtn.addEventListener("click", playPause);
+    track.addEventListener("ended", function() {
+    controlBtn.className = "play";
+    });
+    
+    </script>
+    
+
+
+
+
+
+
+
  </div> 
     
 
