@@ -37,7 +37,7 @@
     <script src="/js/script_carousel.js" defer></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
@@ -320,6 +320,7 @@
               <h3>SUGERI LAS CANCIONES QUE NO PUEDEN FALTAR EN MI FIESTA</h3>
         </div>    
         <section id="confirmarAsistencia" class="confirmarAsistencia">
+
               <form class="contact-form">
                
                 <div class="container_2">
@@ -327,11 +328,11 @@
 
 
                   <label for="">Nombre de la cancion * </label>
-                  <input type="text"  name="nombrecancion" required>
+                  <input type="text"  name="NombreCancion" required>
                   <label for="">Autor *</label>
-                  <input type="text"  name="autor" required>
+                  <input type="text"  name="Autor" required>
                   <label for="">Link de Spotify, Youtube, etc</label>
-                  <input type="text"  name="link">
+                  <input type="text"  name="Link">
 
                   <div class="envio">
                     <button type="submit" class="button">Enviar</button>
@@ -340,7 +341,8 @@
                   
         
                   <div class="contact-form-loader none">
-                    <img src="/img/loader.svg" alt="Cargando">
+                    <img src="img/loader-ball-triangle.svg" alt="Cargando">
+                    <p class="cargando">Enviando</p>
                   </div> 
         
         
@@ -354,7 +356,7 @@
                   <!-- </ul> -->
                 </div>
               </form>
-                <div class="contact-form-response none enviado">
+                <div class="contact-form-response1 none enviado1">
                 <p>Enviado. Gracias!!</p>
               </div>
         </section> 
@@ -440,7 +442,7 @@
           <p class="tespero">Te espero!</p>
         </div>
         
-        <form id="myForm" action="https://formsubmit.co/salazarromina24@yahoo.com.ar" method="POST">
+        <form id="myForm" action="https://formsubmit.co/nadia.vero8787@gmail.com" method="POST">
           <!--era contact-Form-->
           <div class="container_2">
           
@@ -505,6 +507,12 @@
           </div>
   
         </form>
+        <div  id='contact-form-loader' class="contact-form-loader none">
+        
+          <img src="/img/spinning-circles.svg" alt="Cargando">
+          <p class="cargando">Enviando</p>
+        </div> 
+
         <div id="confirmation" class="confirmation" style="display: none;">
           <p>¡Enviado, Gracias!</p>
         </div>
@@ -525,19 +533,24 @@
   <script>
       const form = document.getElementById('myForm');
       const confirmationDiv = document.getElementById('confirmation');
+      const loader = document.getElementById('contact-form-loader');
+      
 
       form.addEventListener('submit', async (e) => {
           e.preventDefault();
 
           // Enviar el formulario utilizando Fetch API
           const formData = new FormData(form);
+          loader.style.display = 'block';
           const response = await fetch(form.action, {
               method: form.method,
-              body: formData
+              body: formData,
+
           });
 
           if (response.ok) {
               //form.style.display = 'none';
+              loader.style.display = 'none';
               form.reset(); 
               confirmationDiv.style.display = 'block';
 
@@ -710,8 +723,10 @@ tween
          e.preventDefault();
         /* alert("Enviando formulario");*/
         const $loader = d.querySelector(".contact-form-loader"),
-           $response = d.querySelector(".contact-form-response");
-         /*  $loader.classList.remove("none");*/
+           $response = d.querySelector(".contact-form-response1");
+           $loader.classList.remove("none");
+         
+         
    
          fetch("https://formsubmit.co/ajax/nadia.vero8787@gmail.com", {
            method: "POST",
@@ -745,49 +760,7 @@ tween
    <!---->
 
 
-   <script>
-/* No esta activo*/
-    const doc = document;
-   
-     function contactFormu() { 
-      const $form = doc.querySelector(".contact"),
-         $inputs = doc.querySelectorAll(".contact[required]");
-   
-       doc.addEventListener("submit", (e) => {
-         e.preventDefault();
-        /* alert("Enviando formulario");*/
-        const $loader = doc.querySelector(".contact-loader"),
-           $response = doc.querySelector(".contact-response");
-         /*  $loader.classList.remove("none");*/
-   
-         fetch ("https://formsubmit.co/ajax/nadia.vero8787@gmail.com", {
-           method: "POST",
-           body: new FormData(e.target)
-         })
-         .then(res=>res.ok ?  res.json():Promise.reject(res))
-         .then(json=>{
-           console.log(json);
-           $loader.classList.add("none");
-           $response.classList.remove("none");
-           $form.reset();
-   
-         })
-         .catch(err=>{
-           console.log(err);
-          /* $response.innerHTML = 'Error ${err.status}:${message}';*/
-         })
-           
-          .finally(()=>setTimeout(()=>{
-             $response.classList.add("none");
-             $loader.classList.add("none")
-             $response.innerHTML = "";
-           }, 5000)); 
-   
-   
-       });
-     }
-     doc.addEventListener("DOMContentLoaded", contactFormu)
-   </script>
+
 
 
 
